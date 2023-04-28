@@ -4,7 +4,7 @@
 // Функция для получения рандомного индекса массива
 const getRandomArrayIndex = (arr) => Math.floor(Math.random() * arr.length);
 
-// Функция, генерирующая случайный пароль
+// Функция, генерирующая случайный ключ
 function generateKey(passLength, arr) {
     let result = '';
     for (let i = 0; i < passLength; i++) {
