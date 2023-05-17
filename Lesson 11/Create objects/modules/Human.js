@@ -1,4 +1,4 @@
-export default class Human {
+export class Human {
     constructor(humanName, age) {
         this.humanName = humanName;
         this.age = age;

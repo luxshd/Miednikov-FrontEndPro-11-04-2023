@@ -1,5 +1,5 @@
-import Human from "./modules/Human.js";
-import Car from "./modules/Car.js";
+import {Human} from "./modules/Human.js";
+import {Car} from "./modules/Car.js";
 
 // Создаём людей-владельцев
 const stas = new Human('Stas', 29)

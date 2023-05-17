@@ -1,4 +1,4 @@
-export default class Car {
+export class Car {
     owner = null;
 
     constructor(brand, model, yearOfManufacture, color, licensePlate) {

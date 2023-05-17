@@ -1,6 +1,6 @@
-import Human from "./modules/Human.js";
-import Apartment from "./modules/Apartment.js";
-import Building from "./modules/Building.js";
+import {Human} from "./modules/Human.js";
+import {Apartment} from "./modules/Apartment.js";
+import {Building} from "./modules/Building.js";
 
 // Лимит квартир
 const apartmentsLimit = 2

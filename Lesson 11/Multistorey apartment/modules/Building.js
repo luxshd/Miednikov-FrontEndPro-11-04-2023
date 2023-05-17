@@ -1,4 +1,4 @@
-export default class Building {
+export class Building {
     constructor(apartmentsLimit) {
         this.apartments = []
         this.apartmentsLimit = apartmentsLimit

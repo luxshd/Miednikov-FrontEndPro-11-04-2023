@@ -1,4 +1,4 @@
-export default class Apartment {
+export class Apartment {
     residents = [];
 
     addResident(human){
