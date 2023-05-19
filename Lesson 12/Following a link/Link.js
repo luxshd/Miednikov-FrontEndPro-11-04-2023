@@ -46,6 +46,7 @@ input.addEventListener('input', () => {
     inputText = input.value.trim().toLowerCase()
 })
 
+// Функия перехода по ссылке и вывод ссылки в консоль
 function followUrl() {
     if (isValidUrl(inputText)) {
         // По id кнопок определяем, какой протокол будет использован
