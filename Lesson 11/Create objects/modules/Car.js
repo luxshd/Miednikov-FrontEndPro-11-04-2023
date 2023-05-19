@@ -1,5 +1,4 @@
 export class Car {
-    owner = null;
 
     constructor(brand, model, yearOfManufacture, color, licensePlate) {
         this.brand = brand;
@@ -7,6 +6,7 @@ export class Car {
         this.yearOfManufacture = yearOfManufacture;
         this.color = color;
         this.licensePlate = licensePlate;
+        this.owner = null;
     }
 
     setOwner(owner) {
