@@ -1,4 +1,4 @@
-body = document.querySelector('body')
+const body = document.querySelector('body')
 
 // Body styles
 body.style.margin = '0'
