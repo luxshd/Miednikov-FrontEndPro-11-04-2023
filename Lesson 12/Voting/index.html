@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="vote_wrapper">
+    <p>Проголосуйте:</p>
+    <div class="vote_btns">
+        <div>
+            <span class="vote_item">&#128534;</span>
+            <span class="rating">0</span>
+        </div>
+        <div>
+            <span class="vote_item">&#128528;</span>
+            <span class="rating">0</span>
+        </div>
+        <div>
+            <span class="vote_item">&#128524;</span>
+            <span class="rating">0</span>
+        </div>
+        <div>
+            <span class="vote_item">&#128522;</span>
+            <span class="rating">0</span>
+        </div>
+        <div>
+            <span class="vote_item">&#128516;</span>
+            <span class="rating">0</span>
+        </div>
+    </div>
+</div>
+
+<script src="Voting.js"></script>
+</body>
+</html>
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        height: 100vh;
+        background: #2f2e2e;
+        color: #fff;
+        font-family: Consolas, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .vote_wrapper {
+        min-height: 200px;
+        width: 400px;
+        background: #4b4273;
+        border-radius: 30px;
+        text-align: center;
+        padding-top: 20px;
+        font-size: 20px;
+    }
+    .vote_wrapper *{
+        user-select: none;
+    }
+    .vote_btns{
+        display: flex;
+    }
+    .vote_btns > div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 20%;
+    }
+    .vote_item {
+        font-size: 40px;
+        transition: all 0.1s ease-in;
+        display: inline-block;
+        cursor: pointer;
+        margin-bottom: 20px;
+    }
+    .rating{
+        width: 80%;
+        padding: 5px 0;
+        background: #463c72;
+        box-shadow: inset 1px 1px 3px rgba(0,0,0,0.1);
+    }
+    .vote_item:hover{
+        transform: scale(1.2);
+    }
+</style>
