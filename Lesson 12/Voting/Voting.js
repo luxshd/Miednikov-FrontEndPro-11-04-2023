@@ -15,6 +15,7 @@ document.body.append(voteWrapper)
 // Создаём блок с кнопками
 const voteBtns = document.createElement('div')
 voteBtns.classList.add('vote_btns')
+voteWrapper.append('Голосуем:')
 voteWrapper.append(voteBtns)
 
 // Создаём кнопки
