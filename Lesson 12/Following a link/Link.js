@@ -57,7 +57,7 @@ function followUrl() {
         // Выводим ссылку в консоль, для достоверности правильности ввода
         console.log(href)
         // Переходим по ссылке в новой вкладке
-        window.open(href, '_black')
+        window.open(href, '_blank')
     } else {
         validText.style.color = 'red'
         validText.innerText = 'Неверный ввод!'
