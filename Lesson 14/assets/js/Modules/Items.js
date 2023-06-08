@@ -9,16 +9,16 @@ export class Items{
         this.maxSpeed = maxSpeed;
         this.maxAltitude = maxAltitude;
         this.price = price;
-        this.imgUrl = imgUrl;
+        this.imgUrl = 'assets/img/' + imgUrl + '.jpg';
         Items.id += 1;
     }
 
     static showItems(category){
-        const mainWindow = document.querySelector('.main_window');
-        mainWindow.innerHTML = '';
+        const mainWindowRow = document.querySelector('.main_window_row');
+        mainWindowRow.innerHTML = '';
         const items = Items.items.filter(item => item.category === category);
         items.forEach(item => {
-            mainWindow.append(getItemCard(item.id, item.imgUrl, item.model))
+            mainWindowRow.innerHTML += (getItemCard(item.id, item.imgUrl, item.model))
         })
     }
 }

@@ -22,6 +22,10 @@ createItem('jets', 'Airbus 321', 470, 39800, 1500000, '321');
 createItem('jets', 'Airbus 340', 504, 36000, 1500000, '340');
 createItem('jets', 'Airbus 350', 487, 40000, 1500000, '350');
 createItem('jets', 'Airbus 380', 511, 43000, 1500000, '380');
+
+createItem('singleengine', 'Cessna 152', 511, 43000, 1500000, 'cessna152');
+createItem('singleengine', 'An 2', 511, 43000, 1500000, 'an2');
+createItem('singleengine', 'Mooney M20', 511, 43000, 1500000, 'mooneym20');
 const nav = [];
 Categories.categories.forEach(category => {
     nav.push(category.url);
@@ -50,8 +54,19 @@ window.addEventListener('click', (e) => {
 })
 
 window.addEventListener('click', (e) => {
-    if(e.target.classList[0] === 'item_card'){
-        const id = e.target.getAttribute('id')
-        showItemInfo(id)
+    if(e.target.classList[0] === 'card'){
+        const id = e.target.getAttribute('id');
+        showItemInfo(id);
     }
+     if(e.target.classList[0] === 'buy_btn'){
+         const mainWindowRow = document.querySelector('.main_window_row');
+         mainWindowRow.innerHTML = `<p class="buy_text">You bought a plane</p>`
+         mainWindowRow.style.height = '100%';
+         setTimeout(()=>{
+             mainWindowRow.innerHTML = ``;
+             mainWindowRow.style.height = 'unset';
+         }, 1000);
+     }
 })
+
+console.log(Items.items)
