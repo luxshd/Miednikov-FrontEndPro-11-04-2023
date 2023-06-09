@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<main>
+    <label for="id">Введите ID поста:</label>
+    <input type="number" id="id" placeholder="От 1 до 100">
+    <button type="submit" id="show-post">Показать пост</button>
+    <div class="post-block"></div>
+    <div class="comments-block"></div>
+</main>
+<script src="promises.js"></script>
+</body>
+</html>
+<style>
+    body{
+        min-height: 100vh;
+        background: #2f2e2e;
+    }
+    input, label, button{
+        display: block;
+        margin: 10px auto;
+    }
+    label{
+        text-align: center;
+        color: #fff;
+    }
+    .post-block{
+        background: aliceblue;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    .comment{
+        background: #fff;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+</style>
