@@ -1,29 +1,23 @@
-import {getItemCard} from "./ItemCards.js";
-export class Items{
+const imgPath = './assets/img/'
+
+export class Items {
     static items = [];
     static id = 1;
-    constructor(category, model, maxSpeed, maxAltitude, price, imgUrl) {
-        this.id = 'i' + Items.id;
-        this.category = category;
-        this.model = model;
-        this.maxSpeed = maxSpeed;
-        this.maxAltitude = maxAltitude;
-        this.price = price;
-        this.imgUrl = 'assets/img/' + imgUrl + '.jpg';
-        Items.id += 1;
-    }
 
-    static showItems(category){
-        const mainWindowRow = document.querySelector('.main_window_row');
-        mainWindowRow.innerHTML = '';
-        const items = Items.items.filter(item => item.category === category);
-        items.forEach(item => {
-            mainWindowRow.innerHTML += (getItemCard(item.id, item.imgUrl, item.model))
-        })
+    constructor(category, model, price, imgUrl, maxFlightDistance, maxAltitude, maxSpeed) {
+        this.id = Items.id;
+        Items.id += 1;
+        this.category = category
+        this.model = model;
+        this.price = price;
+        this.maxFlightDistance = maxFlightDistance;
+        this.maxAltitude = maxAltitude;
+        this.maxSpeed = maxSpeed;
+        this.imgUrl = imgPath + imgUrl;
+        Items.items.push(this);
     }
 }
 
-export function createItem(category, model, maxSpeed, maxAltitude, price, imgUrl){
-    const item = new Items(category, model, maxSpeed, maxAltitude, price, imgUrl);
-    Items.items.push(item);
+export function createItem(category, model, price, img, maxFlightDistance, maxAltitude, maxSpeed) {
+    new Items(category, model, price, img, maxFlightDistance, maxAltitude, maxSpeed);
 }

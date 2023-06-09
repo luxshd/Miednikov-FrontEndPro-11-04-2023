@@ -1,72 +1,29 @@
-import {addCatsToSidebar} from "./Modules/Sidebar.js";
-import {Categories, createCategory} from "./Modules/Categories.js";
-import {Items, createItem} from "./Modules/Items.js";
+import {getCategories} from "./Modules/Categories.js";
+import {showItems} from "./Modules/Navigation.js";
 import {showItemInfo} from "./Modules/ItemInfo.js";
+import {Items} from "./Modules/Items.js";
 
-createCategory('singleengine', 'Одномоторные');
-createCategory('doubleengine', 'Двухмоторные');
-createCategory('jets', 'Реактивные');
-createCategory('hellicopters', 'Вертолёты');
-createCategory('military', 'Военные');
+getCategories()
 
-addCatsToSidebar()
+document.addEventListener('click', (e) => {
+    // Клики по категориям
+    if (e.target.classList[0] === 'nav-link') {
+        showItems(e.target);
+    }
 
-createItem('jets', 'Boeing 737', 350, 41000, 8000000, '737');
-createItem('jets', 'Boeing 747', 490, 35105, 1500000, '747');
-createItem('jets', 'Boeing 767', 360, 43000, 1500000, '767');
-createItem('jets', 'Boeing 777', 512, 43100, 1500000, '777');
-createItem('jets', 'Boeing 787', 515, 43100, 1500000, '787');
-createItem('jets', 'Airbus 319', 514, 41000, 1500000, '319');
-createItem('jets', 'Airbus 320', 500, 41000, 1500000, '320');
-createItem('jets', 'Airbus 321', 470, 39800, 1500000, '321');
-createItem('jets', 'Airbus 340', 504, 36000, 1500000, '340');
-createItem('jets', 'Airbus 350', 487, 40000, 1500000, '350');
-createItem('jets', 'Airbus 380', 511, 43000, 1500000, '380');
+    // Клики по карточкам товаров
+    if (e.target.classList[0] === 'card'){
+        showItemInfo(e.target)
+    }
 
-createItem('singleengine', 'Cessna 152', 511, 43000, 1500000, 'cessna152');
-createItem('singleengine', 'An 2', 511, 43000, 1500000, 'an2');
-createItem('singleengine', 'Mooney M20', 511, 43000, 1500000, 'mooneym20');
-const nav = [];
-Categories.categories.forEach(category => {
-    nav.push(category.url);
-})
-window.addEventListener('click', (e) => {
-    const url = e.target.getAttribute('url');
-    switch (url) {
-        case 'singleengine' :
-            Items.showItems('singleengine');
-            break;
-        case  'doubleengine':
-            Items.showItems('doubleengine');
-            break;
-        case 'jets':
-            Items.showItems('jets');
-            break;
-        case 'hellicopters':
-            Items.showItems('hellicopters');
-            break;
-        case 'military':
-            Items.showItems('military');
-            break;
-        default:
-            break
+    // Клики по кнопке "купить" в информации о товаре
+    if (e.target.classList[0] === 'buy-btn'){
+        const item = Items.items[e.target.id -1];
+        const mainWindow = document.querySelector('.main-window');
+        document.querySelector('.item-info').innerHTML = '';
+        mainWindow.innerHTML = `<p class="buy-text">You bought ${item.model} for $${item.price}</p>`;
+        setTimeout(()=>{
+            mainWindow.innerHTML = '';
+        }, 1500)
     }
 })
-
-window.addEventListener('click', (e) => {
-    if(e.target.classList[0] === 'card'){
-        const id = e.target.getAttribute('id');
-        showItemInfo(id);
-    }
-     if(e.target.classList[0] === 'buy_btn'){
-         const mainWindowRow = document.querySelector('.main_window_row');
-         mainWindowRow.innerHTML = `<p class="buy_text">You bought a plane</p>`
-         mainWindowRow.style.height = '100%';
-         setTimeout(()=>{
-             mainWindowRow.innerHTML = ``;
-             mainWindowRow.style.height = 'unset';
-         }, 1000);
-     }
-})
-
-console.log(Items.items)
