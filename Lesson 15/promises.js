@@ -47,7 +47,7 @@ document.addEventListener('click', (e) => {
     if (e.target.classList[0] === 'show-comments') {
         let commentsUrl = `https://jsonplaceholder.typicode.com/posts/${e.target.id}/comments`;
         const commentsBlock = document.querySelector('.comments-block');
-
+        commentsBlock.innerHTML = '';
         fetchData(e.target.id, commentsUrl)
             .then((data) => {
                 data.forEach(comment => {
