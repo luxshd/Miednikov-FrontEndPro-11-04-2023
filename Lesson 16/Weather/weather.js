@@ -3,7 +3,7 @@ let iconUrl = 'http://openweathermap.org/img/w/';
 let xhr = new XMLHttpRequest();
 
 function getWeather(city){
-    const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=5d066958a60d315387d9492393935c19`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=5d066958a60d315387d9492393935c19`;
     xhr.open('GET', url, false);
     xhr.send();
 
