@@ -1,7 +1,6 @@
 import {getCategories} from "./Modules/Categories.js";
 import {showItems} from "./Modules/Navigation.js";
 import {showItemInfo} from "./Modules/ItemInfo.js";
-import {Items} from "./Modules/Items.js";
 import {getCheckout, isValid} from "./Modules/Checkout.js";
 
 getCategories()
