@@ -8,19 +8,45 @@
     <title>Document</title>
 </head>
 <body>
-<form action="">
-  <input type="text" name="name" id="name">
-  <input type="text" name="birthday" id="birthday">
-  <input type="radio" name="sex" id="m" value="мужчина">
-  <input type="radio" name="sex" id="w" value="жунщина">
-  <select name="city" id="city">
-    <option value="Днепр">Днепр</option>
-    <option value="Киев">Киев</option>
-    <option value="Чернигов">Чернигов</option>
-    <option value="Сумы">Сумы</option>
-  </select>
+<form>
+    <label for="name">Имя</label>
+    <input type="text" name="name" id="name">
+    <label for="birthday">Дата рождения</label>
+    <input type="text" name="birthday" id="birthday">
+    <label for="m">М<input type="radio" name="sex" id="m" value="мужчина"></label>
+    <label for="w">Ж<input type="radio" name="sex" id="w" value="жунщина"></label>
+    <label for="city">Город:</label>
+    <select name="city" id="city">
+        <option value="Днепр">Днепр</option>
+        <option value="Киев">Киев</option>
+        <option value="Чернигов">Чернигов</option>
+        <option value="Сумы">Сумы</option>
+    </select>
+    <label for="adress">Адрес:</label><textarea name="adress" id="adress" cols="30" rows="5"></textarea>
+    <p>Языки:</p>
+    <label>
+        <input type="checkbox" name="languages" value="en">
+        English
+    </label>
+    <label>
+        <input type="checkbox" name="languages" value="de">
+        Deutsch
+    </label>
+    <label>
+        <input type="checkbox" name="languages" value="he">
+        Hebrew
+    </label>
+    <input type="submit" value="Сохранить">
 </form>
 </body>
 </html>
+<style>
+    form{
+        display: flex;
+        flex-direction: column;
+        width: 500px;
+        align-items: flex-start;
+    }
+</style>
 
-<script src=""></script>
+<script src="main.js" type="module"></script>
