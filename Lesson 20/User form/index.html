@@ -10,30 +10,30 @@
 <body>
 <form onsubmit="return false">
     <label for="name">Имя</label>
-    <input type="text" name="name" id="name">
+    <input type="text" name="Name" id="name">
     <label for="birthday">Дата рождения</label>
-    <input type="text" name="birthday" id="birthday">
-    <label for="m">М<input type="radio" name="sex" id="m" value="мужчина"></label>
-    <label for="w">Ж<input type="radio" name="sex" id="w" value="жунщина"></label>
+    <input type="text" name="Birthday" id="birthday">
+    <label for="m">М<input type="radio" name="sex" id="m" value="Мужчина" checked></label>
+    <label for="w">Ж<input type="radio" name="sex" id="w" value="Женщина"></label>
     <label for="city">Город:</label>
-    <select name="city" id="city">
+    <select name="City" id="city">
         <option value="Днепр">Днепр</option>
         <option value="Киев">Киев</option>
         <option value="Чернигов">Чернигов</option>
         <option value="Сумы">Сумы</option>
     </select>
-    <label for="adress">Адрес:</label><textarea name="adress" id="adress" cols="30" rows="5"></textarea>
+    <label for="address">Адрес:</label><textarea name="Address" id="address" cols="30" rows="5"></textarea>
     <p>Языки:</p>
     <label>
-        <input type="checkbox" name="languages" value="en">
+        <input type="checkbox" name="languages" value="английский" id="en">
         English
     </label>
     <label>
-        <input type="checkbox" name="languages" value="de">
+        <input type="checkbox" name="languages" value="немецкий" id="de">
         Deutsch
     </label>
     <label>
-        <input type="checkbox" name="languages" value="he">
+        <input type="checkbox" name="languages" value="иврит" id="he">
         Hebrew
     </label>
     <input type="submit" value="Сохранить">
@@ -49,4 +49,38 @@
     }
 </style>
 
-<script src="main.js" type="module" defer></script>
+<script>
+
+
+    window.addEventListener('click', (e) => {
+        if(e.target.type === 'submit'){
+            const name = document.querySelector('#name').value;
+            const birthday = document.querySelector('#birthday').value;
+            const m = document.querySelector('#m');
+            const w = document.querySelector('#w');
+            let sex = m;
+            if(m.checked){
+                sex = 'Мужчина'
+            } else {
+                sex = 'Женщина'
+            }
+            const city = document.querySelector('#city').value;
+            const address = document.querySelector('#address').value;
+            const languages = document.querySelectorAll('input[type=checkbox]');
+            const checkedLangs = [];
+            for(const lang of languages){
+                if(lang.checked){
+                    checkedLangs.push(lang.value);
+                }
+            }
+            console.log(languages)
+
+            document.querySelector('body').innerHTML = `<p>Имя: ${name}</p>
+<p>Дата рождения: ${birthday}</p>
+<p>Пол: ${sex}</p>
+<p>Город: ${city}</p>
+<p>Адрес: ${address}</p>
+<p>Владение языками: ${checkedLangs}</p>`
+        }
+    })
+</script>
