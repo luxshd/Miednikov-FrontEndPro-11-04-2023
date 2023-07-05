@@ -1,7 +1,7 @@
 import {getCategories} from "./Modules/Categories.js";
 import {showItems} from "./Modules/Navigation.js";
 import {showItemInfo} from "./Modules/ItemInfo.js";
-import {getCheckout, isValid} from "./Modules/Checkout.js";
+import {getCheckout, getValidation} from "./Modules/Checkout.js";
 
 getCategories()
 
@@ -27,6 +27,13 @@ document.addEventListener('click', (e) => {
     }
 
     if (e.target.type === 'submit'){
-        isValid()
+        getValidation()
+    }
+
+    if (e.target.id === 'toHomePage'){
+        const itemInfo = document.querySelector('.item-info');
+        const mainWindow = document.querySelector('.main-window');
+        itemInfo.innerHTML = ``;
+        mainWindow.innerHTML = ``;
     }
 })

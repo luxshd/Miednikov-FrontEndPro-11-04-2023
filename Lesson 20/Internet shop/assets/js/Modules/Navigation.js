@@ -3,6 +3,7 @@ import {Items} from "./Items.js";
 // Выводит товары в центральный блок, в зависимости от категории
 export function showItems(target) {
     const mainWindow = document.querySelector('.main-window');
+    mainWindow.style.display = 'grid';
     mainWindow.innerHTML = `<h2>${target.innerHTML}</h2>`;
     const items = Items.items.filter(item => item.category === target.id);
     items.forEach(item => {

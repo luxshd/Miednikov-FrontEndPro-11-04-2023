@@ -1,10 +1,13 @@
 import {Items} from "./Items.js";
-export function getCheckout(id){
-    return `<form onsubmit="return false" method="post" id="${id}">
-                    <label for="firstname">Имя</label>
-                    <input type="text" id="firstname" name="firstname" placeholder="Ivan" pattern="^[a-zA-Z]+$" required>
+
+export function getCheckout(id) {
+    return `<form onsubmit="return false" id="${id}">
+                    <label for="firstName">Имя</label>
+                    <input type="text" id="firstName" name="firstname" placeholder="Ivan" required>
+                    <p class="errortext"></p>
                     <label for="secondName">Фамилия</label>
-                    <input type="text" id="secondName" name="secondName" placeholder="Ivanov" pattern="^[a-zA-Z]+$" required>
+                    <input type="text" id="secondName" name="secondName" placeholder="Ivanov" required>
+                    <p class="errortext"></p>
                     <select name="cities" id="cities">
                         <option value="Днепр">Днепр</option>
                         <option value="Киев">Киев</option>
@@ -13,51 +16,85 @@ export function getCheckout(id){
                     </select>
                     <label for="warehouse">Склад НП</label>
                     <input type="number" id="warehouse" name="warehouse" placeholder="74" required>
+                    <p class="errortext"></p>
                     <label for="bar">Наличными</label>
                     <input type="radio" name="payment" value="наличными" checked>
                     <label for="card">Картой</label>
                     <input type="radio" name="payment" value="картой">
                     <label for="amount">Количество</label>
                     <input type="number" name="amount" id="amount" required>
-                    <textarea name="comment" id="comment" cols="30" rows="10" required></textarea>
+                    <p class="errortext"></p>
+                    <textarea name="comment" id="comment" cols="30" rows="5" required></textarea>
+                    <p class="errortext"></p>
                     <input type="submit" value="Send" id="submit">
-                    <p class="errorText" style="color: red"></p>
                 </form>`;
 }
 
-export function isValid() {
-    const form= document.querySelector('form');
-    const id = form.id;
-    const data = new FormData(form);
+export function getValidation() {
+    let errorsCount = 0;
+    const id = document.querySelector('form').id;
+    const item = Items.items[id];
+    const fname = document.querySelector('#firstName');
+    const sname = document.querySelector('#secondName');
+    const city = document.querySelector('#cities');
+    const warehouse = document.querySelector('#warehouse');
+    const payment = document.querySelector('input[name=payment]');
+    const amount = document.querySelector('#amount');
+    const comment = document.querySelector('#comment');
+    console.log(id)
+    const regAlpha = /[a-zа-яё]/i;
+    const alphaInputs = [fname, sname];
+    const isEmptyInputs = [warehouse, amount, comment]
+    isValidInput(alphaInputs, regAlpha)
+    isEmpty(isEmptyInputs)
+    const errors = document.querySelectorAll('.errortext');
 
-    let userData = [...data.values()];
-    let emptyFields = 0;
-    for(const data of userData){
-        if (data === ""){
-            emptyFields += 1;
-            document.querySelector('.errorText').innerHTML = `Вы не заполнили ${emptyFields} поле(й).`;
+    for (const error of errors) {
+        if (error.innerHTML !== '') {
+            errorsCount += 1;
         }
     }
 
-    // Только если все поля заполнены - выведется результат заказа в главный блок
-    if (emptyFields === 0){
-        document.querySelector('.errorText').innerHTML = ``;
+    if (errorsCount === 0) {
         const mainWindow = document.querySelector('.main-window');
-        mainWindow.style.display = 'block';
-        const item = Items.items[id];
+        mainWindow.style.display = 'flex';
+        mainWindow.style.flexDirection = 'column';
+        mainWindow.innerHTML = `
+<p>Your order has been completed successfully</p>
+<p>Order info:</p>
+<ul style="list-style: none">
+<li>Name: ${fname.value} ${sname.value}</li>
+<li>City: ${city.value}</li>
+<li>Warehouse: ${warehouse.value}<br>We have no idea how you will receive the plane through the Nova Post O_o</li>
+<li>Payment method: ${payment.value}</li>
+<li>Amount: ${amount.value}</li>
+<li>Comment: ${comment.value}</li>
+<li><img src="${item.imgUrl}" alt=""></li>
+<li>Model: ${item.model}</li>
+<li>Price: ${item.price}</li>
+</ul>
+<button id="toHomePage">To home page</button>`
+    }
+}
 
-        let [fName, sName, city, warehouse, payment, amount, comment] = userData;
-        mainWindow.innerHTML = `<p>Вы совершили заказ:</p>
-            <p>На имя: ${sName} ${fName}</p>
-            <p>Город: ${city}</p>
-            <p>Склад НП №: ${warehouse}</p>
-            <p>Метод оплаты: ${payment}</p>
-            <p>Количество: ${amount}</p>
-            <p>Комментарий к заказу: ${comment}</p>
-            <p><b>Model:</b> ${item.model}</p>
-            <p><b>Max flight distance:</b> ${item.maxFlightDistance} km</p>
-            <p><b>Max flight altitude:</b> ${item.maxAltitude} feet</p>
-            <p><b>Max flight speed:</b> ${item.maxSpeed} knots</p>
-            <p><b>Price:</b> $${item.price}</p>`
+function isValidInput(elemsArray, reg) {
+    for (const elem of elemsArray) {
+        if (!reg.test(elem.value)) {
+            elem.nextElementSibling.innerHTML = 'Invalid input';
+            elem.nextElementSibling.style.color = 'red';
+        } else {
+            elem.nextElementSibling.innerHTML = '';
+        }
+    }
+}
+
+function isEmpty(elemsArray) {
+    for (const elem of elemsArray) {
+        if (!elem.value) {
+            elem.nextElementSibling.innerHTML = 'Invalid input';
+            elem.nextElementSibling.style.color = 'red';
+        } else {
+            elem.nextElementSibling.innerHTML = '';
+        }
     }
 }
