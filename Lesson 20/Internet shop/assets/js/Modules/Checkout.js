@@ -2,26 +2,27 @@ import {Items} from "./Items.js";
 
 export function getCheckout(id) {
     return `<form onsubmit="return false" id="${id}">
-                    <label for="firstName">Имя</label>
+                    <label for="firstName">First name</label>
                     <input type="text" id="firstName" name="firstname" placeholder="Ivan" required>
                     <p class="errortext"></p>
-                    <label for="secondName">Фамилия</label>
+                    <label for="secondName">Last name</label>
                     <input type="text" id="secondName" name="secondName" placeholder="Ivanov" required>
                     <p class="errortext"></p>
+                    <label for="cities">City</label>
                     <select name="cities" id="cities">
-                        <option value="Днепр">Днепр</option>
-                        <option value="Киев">Киев</option>
-                        <option value="Чернигов">Чернигов</option>
-                        <option value="Сумы">Сумы</option>
+                        <option value="Dnipro">Dnipro</option>
+                        <option value="Kiev">Kiev</option>
+                        <option value="Chernigov">Chernigov</option>
+                        <option value="Sumy">Sumy</option>
                     </select>
-                    <label for="warehouse">Склад НП</label>
+                    <label for="warehouse">Warehouse Nova Post</label>
                     <input type="number" id="warehouse" name="warehouse" placeholder="74" required>
                     <p class="errortext"></p>
-                    <label for="bar">Наличными</label>
-                    <input type="radio" name="payment" value="наличными" checked>
-                    <label for="card">Картой</label>
-                    <input type="radio" name="payment" value="картой">
-                    <label for="amount">Количество</label>
+                    <label for="bar">Cash
+                    <input type="radio" name="payment" value="Cash" checked></label>
+                    <label for="card">Card
+                    <input type="radio" name="payment" value="Card"></label>
+                    <label for="amount">Amount</label>
                     <input type="number" name="amount" id="amount" required>
                     <p class="errortext"></p>
                     <textarea name="comment" id="comment" cols="30" rows="5" required></textarea>
