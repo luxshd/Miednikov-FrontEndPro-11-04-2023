@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 20px;
+}
+.App{
+    height: 100vh;
+}
+header{
+    background: #4b4273;
+}
+.header_wrapper{
+    height: 50px;
+    background: #4b4273;
+    color: #fff;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header span {
+    font-weight: 800;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+aside{
+    width: 30%;
+    background: #74737a;
+    color: #fff;
+    height: 100%;
+    float: left;
+}
+main{
+    background: #2f2e2e;
+    width: 70%;
+    color: #ffffff;
+    padding: 50px;
+    float: right;
+    height: 100%;
+}
